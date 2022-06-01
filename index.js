@@ -1,92 +1,49 @@
-const swithBtn = document.getElementById("twelveHourBtn");
+calculateTime = () => {
+  const date = new Date();
+  const dayNumber = date.getDay();
+  let hour = date.getHours();
+  const minute = date.getMinutes();
+  const seconds = date.getSeconds();
+  const amPm = hour >= 12 ? 'PM' : 'AM';
+  const dayNames = ["SUN", "MON", "TUE", "WED", "THU","FRI", "SAT"];
 
-let twelveHourBtn = document.getElementById("twelveHourBtn");
-let getTime = document.getElementById("time");
-let isTwelveHour = true;
-let amPm = " AM";
+  hour = hour % 12;
+  hour = hour ? hour : '12';
 
-function checkTime(i) {
-  if(i < 10) {
-    i = "0" + i;
-  }
-  return i;
-}
+  writeHTML("#day", dayNames[dayNumber]);
+  writeHTML("#hour", withLeadingZero(hour));
+  writeHTML("#minute", withLeadingZero(minute));
+  writeHTML("#seconds", withLeadingZero(seconds));
+  writeHTML("#amPm", amPm);
 
-function startTime() {
-  let hours = "12";
-  let today = new Date();
-  let h = today.getHours();
-
-  if (h > 12) {
-    amPm = " PM";
-  } else {
-    amPm = " AM";
+  function withLeadingZero(value) {
+    return value < 10 ? '0' + value : value
   }
 
-  if (isTwelveHour) {
-    hours = "24";
-    if (h >= 12) {
-      h = h - 12;
-    }
-  } else {
-    hours = "12"; 
+  function writeHTML(selector, newValue) {
+    element = document.querySelector(selector);
+    let currentValue = element.value;
+    if (currentValue === newValue) return;
+    element.textContent = newValue;
   }
-  twelveHourBtn.innerHTML = hours + " hour clock";
-  let m = today.getMinutes();
-  let s = today.getSeconds();
-  m = checkTime(m);
-  s = checkTime(s);
-  getTime.innerHTML = h + ":" + m + ":" + s + amPm;
-  t = setTimeout(function() {
-    startTime();
-  }, 200);
+  setTimeout(calculateTime, 200);
 }
 
-startTime();
+window.addEventListener('load', calculateTime);
 
-switch (new Date().getDay()) {
-  case 0:
-document.querySelector(".sunday").classList.add("glow");
-    break;
-  case 1:
-document.querySelector(".monday").classList.add("glow");
-    break;
-  case 2:
-document.querySelector(".tuesday").classList.add("glow");
-    break;
-  case 3:
-document.querySelector(".wednesday").classList.add("glow");
-    break;
-  case 4:
-document.querySelector(".thursday").classList.add("glow");
-    break;
-  case 5:
-document.querySelector(".friday").classList.add("glow");
-    break;
-  case 6:
-document.querySelector(".saturday").classList.add("glow");
+bgcolor = () => {
+  const data = new Date();
+  const d = data.getHours();
+  const body = document.querySelector('body');
+
+  if (d >= 22 || d < 6) {
+    body.style.background = 'radial-gradient(circle farthest-corner at 100px 50px, #FBF2EB, #352A3B)';
+  } else if (d >= 6 && d < 10) {
+    body.style.background = 'linear-gradient(to top left, powderblue, pink)';
+  } else if (d >= 10 && d < 18) {
+    body.style.background = 'conic-gradient(from 90deg at 25% -10%, #fff700ed, #1e00ff68, #25c12f, #ea00ff7c, #0004ff)';
+  } else if (d >= 18 && d < 22) {
+    body.style.background = 'radial-gradient(white, #FFA9A1)';
+  }
 }
-
-let month = document.querySelector(".month");
-let day = document.querySelector(".day");
-let year = document.querySelector(".year");
-let date = new Date();
-
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
-month.innerHTML = months[date.getMonth()];
-day.innerHTML = date.getDate();
-year.innerHTML = date.getFullYear();
-
+window.addEventListener('load', bgcolor);

@@ -1,78 +1,54 @@
-body, html {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  font-size: 16px;
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+body {
+  font-family: 'Poiret One', cursive;
+  overflow: hidden;
 }
-h1 {
-  visibility: hidden;
-}
+
+
 .container {
-  display: block;
-  margin: 1em auto;
+  width: 95%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#copyright {
-  text-align: center;
-  font-size: .8em;
-  margin-top: 5em;
-}
-a{
-  text-decoration: none;
-}
-a:visited {
-  color: #555;
-}
-a:hover {
-  color: #222;
-}
-button {
-  background: #000;
+.digitalClock {
+  width: fit-content;
+  margin: auto;
+  padding: 10px;
+  border-radius: 2px;
   color: #fff;
-  text-transform: uppercase;
-  width: 200px;
-  height: 50px;
-  border: none;
-  outline: none;
+  background: rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 }
 
-button:hover {
-  color: #444;
-  transition: color .5s;
-  cursor: pointer;
-}
-
-#time {
-  font-size: 2em;
-  margin-bottom: 1em;
-}
-ul {
-  font-size: 1.5em;
-  color: #333;
-}
-ul li {
-  margin: 1em;
+.digitalClock h1 {
   display: inline-block;
-}
-.glow {
-  color: #fff;
-  text-align: center;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
+  margin: 0 10px;
+  font-weight: bold;
+  font-size: 5rem;
 }
 
-@-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff,
-    0 0 30px #e50022, 0 0 40px #e50022,
-    0 0 50px #e50022, 0 0 60px #e50022,
-    0 0 70px #e50022;
+@media(max-width:768px) {
+  #bar1, #bar2 {
+    display: none;
   }
-  
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #e20000,
-    0 0 40px #e20000, 0 0 50px #e20000, 0 0 60px #e20000,
-    0 0 70px #e20000, 0 0 80px #e20000;
+
+  .digitalClock {
+    text-align: center;
+    width: 100%;
+  }
+
+  .digitalClock h1 {
+    display: block;
+  }
+}
+
+@media(max-width:480px) {
+  .digitalClock h1{
+    font-size: 4rem;
   }
 }

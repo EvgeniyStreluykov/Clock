@@ -4,35 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Digital Clock</title>
 </head>
 <body>
-  <div id="clock">
-    <div id="time" class="glow"></div>
-
-    <div id="date">
-      <span class="month"></span>
-      <span class="day"></span>
-      <span class="year"></span>
-    </div>
-
-    <div class="container">
-      <button id="twelveHourBtn">24 hour clock</button>
-    </div>
-  </div>
-
   <div class="container">
-    <ul class="days">
-      <li class="sunday">Sun</li>
-      <li class="monday">Mon</li>
-      <li class="tuesday">Tues</li>
-      <li class="wednsday">Wed</li>
-      <li class="thursday">Thur</li>
-      <li class="friday">Fri</li>
-      <li class="saturday">Sat</li>
-    </ul>
+
+    <div class="digitalClock">
+      <h1 id="day"></h1>
+      <h1 id="hour"></h1>
+      <h1 id="bar1">:</h1>
+      <h1 id="minute"></h1>
+      <h1 id="bar2">:</h1>
+      <h1 id="seconds"></h1>
+      <h1 id="bar3">:</h1>
+      <h1 id="amPm"></h1>
+    </div>
   </div>
-  <script src="./js/index.js"></script>
+
+  <div class="currentTime">
+    Click
+  </div>
+
+  <script src="./index.js"></script>
 </body>
 </html>
